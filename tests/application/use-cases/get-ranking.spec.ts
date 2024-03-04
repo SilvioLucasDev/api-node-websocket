@@ -5,9 +5,6 @@ import { EmitWebSocket } from '@/application/contracts/adapters'
 import { type MockProxy, mock } from 'jest-mock-extended'
 
 describe('GetRankingUseCase', () => {
-  let note: number
-  let studentId: string
-  let name: string
   let rankStudentsBySchool: Record<string, object[]>
   let rankStudents: object[]
 
@@ -17,9 +14,6 @@ describe('GetRankingUseCase', () => {
 
 
   beforeAll(() => {
-    note = 7.6
-    studentId = 'any_student_id'
-    name = 'any_name'
     rankStudentsBySchool = {
       'school_1': [{ data: 'any_data_1' }],
       'school_2': [{ data: 'any_data_2' }],
@@ -29,7 +23,7 @@ describe('GetRankingUseCase', () => {
     studentRepository = mock()
     studentRepository.getRanking.mockResolvedValue({ rankStudentsBySchool, rankStudents });
     websocket = mock<EmitWebSocket>();
-    websocket.emit.mockImplementation(() => {});
+    websocket.emit.mockImplementation(() => { });
   })
 
   beforeEach(() => {
